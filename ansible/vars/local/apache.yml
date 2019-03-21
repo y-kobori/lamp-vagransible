@@ -20,7 +20,7 @@ apache_vhosts:
   # Additional properties:
   # 'serveradmin, serveralias, allow_override, options, extra_parameters'.
   - servername: "dev.awesome-web.com"
-    documentroot: "/vagrant/web/awesome_db"
+    documentroot: "/home/vagrant/www/awesome_web"
     arrow_override: "All"
 
 apache_allow_override: "All"

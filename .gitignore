@@ -1,5 +1,6 @@
 .DS_Store
 .vagrant
 roles
-web
+www/*
+!.gitkeep
 *.log
