@@ -10,3 +10,5 @@
   version: 3.0.3
 - src: moviedo.nvm
   version: v1.1.3
+- src: pddg.neovim
+  version: v1.0.0

@@ -28,11 +28,12 @@
   - vars/local/apache.yml
   - vars/local/php.yml
   roles:
-     - geerlingguy.php
-     - geerlingguy.php-versions
-     - geerlingguy.composer
-     - geerlingguy.apache
-     - geerlingguy.mysql
+    - geerlingguy.php
+    - geerlingguy.php-versions
+    - geerlingguy.composer
+    - geerlingguy.apache
+    - geerlingguy.mysql
+    - pddg.neovim
 
 - name: setup_nvm
   connection: local
@@ -44,3 +45,14 @@
   roles:
     - moviedo.nvm
 
+- name: setup_hosts
+  connection: local
+  hosts: vagrants
+  gather_facts: no
+  become: yes
+  vars:
+    ipaddress: 192.168.33.44
+  vars_files:
+    - vars/local/apache.yml
+  tasks:
+    - include: tasks/hosts.yml

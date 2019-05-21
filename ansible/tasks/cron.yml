@@ -1,0 +1,10 @@
+- name: set job
+  cron:
+    user: root
+    name: Sample Task
+    minute: "*"
+    hour: "*"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: echo "This is sample cron task."

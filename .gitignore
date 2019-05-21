@@ -1,6 +1,6 @@
 .DS_Store
 .vagrant
-roles
+ansible/roles/*
 www/*
 !.gitkeep
 *.log
