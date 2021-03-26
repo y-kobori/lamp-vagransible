@@ -1,0 +1,19 @@
+- name: Copy timesyncd config
+  copy:
+    src: timesyncd.conf
+    dest: /etc/systemd/timesyncd.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable auto starting for timesyncd
+  systemd:
+    name: systemd-timesyncd.service
+    state: restarted
+    enabled: yes
+
+- name: Disable auto starting for php-fpm
+  systemd:
+    name: php{{ php_version }}-fpm.service
+    state: stopped
+    enabled: no

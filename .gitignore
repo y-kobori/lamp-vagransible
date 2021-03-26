@@ -1,6 +1,9 @@
 .DS_Store
 .vagrant
-ansible/roles/*
-www/*
-!.gitkeep
+Vagrantfile
 *.log
+/ansible/playbooks/roles/dotfiles/files/*
+!/ansible/playbooks/roles/dotfiles/files/.gitkeep
+!/www/files
+/www/files/*
+!/www/files/.gitkeep

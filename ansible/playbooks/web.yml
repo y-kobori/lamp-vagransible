@@ -1,0 +1,44 @@
+- name: Setup bootstrap
+  hosts: _web
+  gather_facts: yes
+  become: yes
+  roles:
+    - { role: bootstrap, tags: bootstrap }
+    - { role: robertdebock.locale, tags: bootstrap }
+
+- name: Setup middleware
+  hosts: _web
+  gather_facts: yes
+  become: yes
+  roles:
+    - { role: apache, tags: apache }
+    - { role: php, tags: php }
+  tags: middleware
+
+- name: Setup nodejs
+  hosts: _web
+  gather_facts: yes
+  roles:
+    - { role: deluxebrain.ansible_role_nodejs, tags: nodejs }
+  tags: middleware
+
+- name: Setup systemd
+  hosts: _web
+  gather_facts: no
+  become: yes
+  roles:
+    - { role: systemd, tags: systemd }
+
+- name: Setup cron
+  hosts: _web
+  gather_facts: no
+  become: yes
+  roles:
+    - { role: cron, tags: cron }
+
+- name: Setup logrotate
+  hosts: _web
+  gather_facts: no
+  become: yes
+  roles:
+    - { role: logrotate, tags: logrotate }

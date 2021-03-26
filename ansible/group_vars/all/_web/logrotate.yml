@@ -1,0 +1,4 @@
+---
+logrotate_files:
+  - apache2
+  - php

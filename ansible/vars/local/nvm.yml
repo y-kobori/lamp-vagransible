@@ -1,9 +1,0 @@
-nvm_user: vagrant
-nvm_version: "v0.34.0"
-nvm_node_version: "10.15.2"
-nvm_npm_pkgs:
-  - pkg: rimraf
-    version: "*"
-  - pkg: cpx
-    version: "*"
-

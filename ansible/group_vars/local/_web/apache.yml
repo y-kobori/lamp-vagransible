@@ -1,0 +1,6 @@
+---
+
+apache_vhosts:
+  - servername: "dev.sample-app.com"
+    documentroot: "/var/www/html/domain_app/public"
+    allow_override: "All"

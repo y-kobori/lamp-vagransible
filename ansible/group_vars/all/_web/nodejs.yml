@@ -1,0 +1,12 @@
+---
+nodenv_version: "latest"
+nodebuild_version: "latest"
+nodenvvars_version: "latest"
+
+nodejs_versions:
+  - 14.15.1
+global_nodejs_version: 14.15.1
+
+plugins: []
+
+init_shell: yes

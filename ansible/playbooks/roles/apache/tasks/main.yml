@@ -1,0 +1,24 @@
+- name: Add apt repository for php module
+  apt_repository:
+    repo: ppa:ondrej/php
+    update_cache: yes
+
+- name: Install php module
+  apt:
+    name:
+      - libapache2-mod-php{{ php_version }}
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Setup apache
+  import_role:
+    name: geerlingguy.apache
+
+- name: Place apache prefork configuration file
+  template:
+    src: mpm_prefork.conf.j2
+    dest: /etc/apache2/mods-available/mpm_prefork.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart apache

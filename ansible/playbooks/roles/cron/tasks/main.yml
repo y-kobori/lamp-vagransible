@@ -1,0 +1,22 @@
+- name: Recreate crontab for root user
+  copy:
+    content: ""
+    dest: /var/spool/cron/crontabs/root
+
+- name: Recreate crontab for cron user
+  copy:
+    content: ""
+    dest: "/var/spool/cron/crontabs/{{ cron_user }}"
+
+- name: Set job scheduled by Laravel
+  cron:
+    user: "{{ cron_user }}"
+    name: "{{ item.name }}"
+    minute: "*"
+    hour: "*"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "{{ item.command }}"
+    state: present
+  loop: "{{ cron_jobs }}"

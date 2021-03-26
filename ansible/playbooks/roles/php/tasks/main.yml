@@ -1,0 +1,50 @@
+- name: Setup php
+  block:
+    - import_role:
+        name: geerlingguy.php-versions
+
+    - import_role:
+        name: geerlingguy.php
+
+    - import_role:
+        name: geerlingguy.php-xdebug
+      when:
+        - stage == "local"
+
+    - import_role:
+        name: geerlingguy.composer
+
+    - name: Change owner and permission for xdebug log
+      file:
+        path: /var/log/xdebug.log
+        owner: vagrant
+        group: vagrant
+        mode: 0644
+        state: touch
+      when: stage == "local"
+
+    - name: Ensure log directory
+      file:
+        path: /var/log/php
+        state: directory
+        follow:
+        mode: 0755
+
+    - name: Ensure log file
+      file:
+        path: /var/log/php/error.log
+        state: touch
+        owner: www-data
+        group: www-data
+        mode: 0644
+
+    - name: Place php configuration file
+      copy:
+        src: "{{ php_ini_resource_file }}"
+        dest: "{{ item }}/php.ini"
+        owner: root
+        group: root
+        mode: 0644
+      loop: "{{ php_conf_paths }}"
+      notify: restart webserver
+      when: not php_use_managed_ini

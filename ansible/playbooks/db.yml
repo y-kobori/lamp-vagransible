@@ -1,0 +1,6 @@
+- name: setup mysql
+  hosts: _db
+  gather_facts: yes
+  become: yes
+  roles:
+    - { role: geerlingguy.mysql, tags: mysql }

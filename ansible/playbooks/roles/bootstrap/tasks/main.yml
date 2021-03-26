@@ -1,0 +1,11 @@
+- name: Set timezone to Asia/Tokyo
+  timezone:
+    name: Asia/Tokyo
+
+- name: Execute apt update and install packages
+  apt:
+    name:
+      - unzip
+      - zip
+    update_cache: yes
+    cache_valid_time: 3600

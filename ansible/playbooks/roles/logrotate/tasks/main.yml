@@ -1,0 +1,8 @@
+- name: Place logrotate configuration file
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/logrotate.d/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  loop: "{{ logrotate_files }}"
